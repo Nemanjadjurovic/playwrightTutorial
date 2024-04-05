@@ -2,7 +2,7 @@ from playwright.sync_api import Playwright, sync_playwright, expect
 
 
 def run(playwright: Playwright) -> None:
-    browser = playwright.chromium.launch(headless=False, slow_mo=2000)
+    browser = playwright.chromium.launch(headless=False, slow_mo=1000)
     context = browser.new_context()
     page = context.new_page()
     page.set_default_timeout(5000)
@@ -16,8 +16,15 @@ def run(playwright: Playwright) -> None:
     page.get_by_label("Password").click()
     page.get_by_label("Password").fill("test123")
     page.get_by_test_id("submit").get_by_test_id("buttonElement").click()
-    page.wait_for_load_state("networkidle")
-    expect(page.get_by_role("button", name="Log In")).to_be_hidden()
+    # page.wait_for_load_state("networkidle")
+    # expect(page.get_by_role("button", name="Log In")).to_be_hidden()
+
+    all_links = page.get_by_role("link").all()
+    for link in all_links:
+        if '$85' in link.text_content():
+            print("all good")
+            assert 'Socks' not in link.text_content()
+
     print("Wohooo!")
 
     # ---------------------
