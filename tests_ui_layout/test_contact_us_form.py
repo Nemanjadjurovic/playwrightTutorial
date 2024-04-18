@@ -1,7 +1,6 @@
-import time
-
 from playwright.sync_api import Playwright, sync_playwright
 # import pytest
+import time
 from pom.contact_us_page import ContactUsPage
 
 
