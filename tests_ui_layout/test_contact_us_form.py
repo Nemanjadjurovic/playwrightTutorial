@@ -12,5 +12,5 @@ def test_submit_form(playwright: Playwright):
     contact_us.submit_form("Nemanja", "ulica 123", "email@email.com", "123-321-333", "test subject", "poruka ide")
 
 
-with sync_playwright() as playwright:
-    test_submit_form(playwright)
+# with sync_playwright() as playwright:
+#     test_submit_form(playwright)
