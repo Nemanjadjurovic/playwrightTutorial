@@ -1,9 +1,10 @@
 from playwright.sync_api import Playwright, sync_playwright
-# import pytest
+import pytest
 import time
 from pom.contact_us_page import ContactUsPage
 
 
+@pytest.mark.smoke
 def test_submit_form(playwright: Playwright):
     browser = playwright.chromium.launch(headless=False)
     page = browser.new_page()

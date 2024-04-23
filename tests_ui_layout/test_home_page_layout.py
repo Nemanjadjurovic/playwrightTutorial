@@ -3,6 +3,8 @@ from pom.home_page_elements import HomePage
 import pytest
 
 
+@pytest.mark.integration
+@pytest.mark.regression
 def test_about_us_section_verbiage(playwright: Playwright):
     browser = playwright.chromium.launch(headless=False)
     page = browser.new_page()

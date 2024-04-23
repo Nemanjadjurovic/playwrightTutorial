@@ -1,13 +1,14 @@
 import time
-
+import pytest
 from playwright.sync_api import Playwright, sync_playwright, expect
 
 
-def run(playwright: Playwright) -> None:
+@pytest.mark.smoke
+def test_login(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=False)  #slow_mo=500
     context = browser.new_context()
     page = context.new_page()
-    page.set_default_timeout(5000)
+    page.set_default_timeout(3000)
     time.sleep(2)
     page.goto("https://symonstorozhenko.wixsite.com/website-1")
     page.wait_for_load_state("networkidle")
