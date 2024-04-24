@@ -5,11 +5,12 @@ import pytest
 
 @pytest.mark.integration
 @pytest.mark.regression
-def test_about_us_section_verbiage(playwright: Playwright):
-    browser = playwright.chromium.launch(headless=False)
-    page = browser.new_page()
+def test_about_us_section_verbiage(set_up):
+    page = set_up
+    # browser = playwright.chromium.launch(headless=False)
+    # page = browser.new_page()
     home_page = HomePage(page)
-    page.goto('https://symonstorozhenko.wixsite.com/website-1')
+    # page.goto('https://symonstorozhenko.wixsite.com/website-1')
     expect(home_page.celebrate_header).to_be_visible()
     expect(home_page.celebrate_body).to_be_visible()
 

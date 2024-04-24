@@ -4,13 +4,8 @@ from playwright.sync_api import Playwright, sync_playwright, expect
 
 
 @pytest.mark.smoke
-def test_login(playwright: Playwright) -> None:
-    browser = playwright.chromium.launch(headless=False)  #slow_mo=500
-    context = browser.new_context()
-    page = context.new_page()
-    page.set_default_timeout(3000)
-    time.sleep(2)
-    page.goto("https://symonstorozhenko.wixsite.com/website-1")
+def test_login(set_up) -> None:
+    page = set_up
     page.wait_for_load_state("networkidle")
     expect(page.get_by_role("button", name="Log In")).to_be_visible()
     page.get_by_role("button", name="Log In").click()
@@ -32,8 +27,8 @@ def test_login(playwright: Playwright) -> None:
     print("Wohooo!")
 
     # ---------------------
-    context.close()
-    browser.close()
+    # context.close()
+    # browser.close()
 
 
 # with sync_playwright() as playwright:
