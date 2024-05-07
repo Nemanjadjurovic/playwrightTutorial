@@ -1,12 +1,13 @@
+import os
 import time
-import utils.secret_config
+# import utils.secret_config
 import pytest
 from playwright.sync_api import Playwright, sync_playwright, expect
 
 
-@pytest.mark.parametrize("email, password", [("symon.storozhenko@gmail.com", utils.secret_config.PASSWORD),
+@pytest.mark.parametrize("email, password", [("symon.storozhenko@gmail.com", os.environ['PASSWORD']), #("symon.storozhenko@gmail.com", utils.secret_config.PASSWORD)
                                         pytest.param("fakeemail", "fakepassword", marks=pytest.mark.xfail),
-                                        pytest.param("symon.storozhenko@gmail", utils.secret_config.PASSWORD, marks=pytest.mark.xfail)])
+                                        pytest.param("symon.storozhenko@gmail", os.environ['PASSWORD'], marks=pytest.mark.xfail)])
 @pytest.mark.smoke
 def test_login(set_up, email, password) -> None:
     page = set_up
