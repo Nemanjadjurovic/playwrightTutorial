@@ -45,7 +45,7 @@ def login_set_up(context_creation, browser):
     context = browser.new_context(storage_state='state.json')
     page = context.new_page()
     page.goto("https://symonstorozhenko.wixsite.com/website-1")
-    # page.set_default_timeout(3000)
+    page.set_default_timeout(3000)
 
     yield page
     time.sleep(5)
