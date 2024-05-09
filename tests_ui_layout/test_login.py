@@ -5,7 +5,7 @@ import pytest
 from playwright.sync_api import Playwright, sync_playwright, expect
 
 PASSWORD = os.environ['PASSWORD']
-# EMAIL = os.environ['EMAIL']
+EMAIL = os.environ['EMAIL']
 
 # try:
 #     PASSWORD = os.environ['PASSWORD']
