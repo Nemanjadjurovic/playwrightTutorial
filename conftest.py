@@ -3,8 +3,8 @@ import time
 from playwright.sync_api import Playwright
 import pytest
 
-PASSWORD = os.environ['PASSWORD']
-EMAIL = os.environ['EMAIL']
+# PASSWORD = os.environ['PASSWORD']
+# EMAIL = os.environ['EMAIL']
 
 
 @pytest.fixture()
