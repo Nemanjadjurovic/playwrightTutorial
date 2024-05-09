@@ -2,3 +2,4 @@
 /.idea/
 /utils/secret_config.py
 .env
+conftest_page_fixure.py
