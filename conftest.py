@@ -4,7 +4,7 @@ from playwright.sync_api import Playwright
 import pytest
 
 PASSWORD = os.environ['PASSWORD']
-EMAIL = os.environ['EMAIL']
+# EMAIL = os.environ['EMAIL']
 
 
 @pytest.fixture()
