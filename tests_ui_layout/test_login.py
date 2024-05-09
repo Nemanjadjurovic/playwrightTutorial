@@ -14,7 +14,7 @@ EMAIL = os.environ['EMAIL']
 #     PASSWORD = utils.secret_config.PASSWORD
 
 
-@pytest.mark.parametrize("email, password", [("symon.storozhenko@gmail.com", PASSWORD), #("symon.storozhenko@gmail.com", utils.secret_config.PASSWORD)
+@pytest.mark.parametrize("email, password", [(EMAIL, PASSWORD), #("symon.storozhenko@gmail.com", utils.secret_config.PASSWORD)
                                         pytest.param("fakeemail", "fakepassword", marks=pytest.mark.xfail),
                                         pytest.param("symon.storozhenko@gmail", PASSWORD, marks=pytest.mark.xfail)])
 @pytest.mark.smoke
@@ -25,9 +25,9 @@ def test_login(set_up, email, password) -> None:
     page.get_by_role("button", name="Log In").click()
     page.get_by_test_id("signUp.switchToSignUp").click()
     page.get_by_role("button", name="Log in with Email").click()
-    page.get_by_test_id("emailAuth").get_by_label("Email").fill(EMAIL)
+    page.get_by_test_id("emailAuth").get_by_label("Email").fill(os.environ['EMAIL'])
     page.get_by_label("Password").click()
-    page.get_by_label("Password").fill(PASSWORD)
+    page.get_by_label("Password").fill(os.environ['PASSWORD'])
     page.get_by_test_id("submit").get_by_test_id("buttonElement").click()
     # page.wait_for_load_state("networkidle")
     # expect(page.get_by_role("button", name="Log In")).to_be_hidden()
