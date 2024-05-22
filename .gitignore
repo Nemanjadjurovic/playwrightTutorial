@@ -3,3 +3,6 @@
 /utils/secret_config.py
 .env
 conftest_page_fixure.py
+.pytest_cache
+/tests_ui_layout/snapshot_tests_failures/
+/tests_ui_layout/snapshots/
